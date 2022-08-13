@@ -18,15 +18,15 @@ This is project is a product of combining the "building blocks" I've learned fro
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### Video Demo
 
 Here is the video that demonstrates the final output.
 
-Using the speedometer, user will set the desired rotation speed of the rocket. The speed is in kph and the converted speed in m/s is also shown above the speedometer. The user will also hear prompts about the speed, if it's fast or slow.
+Using the speedometer, user will set the desired rotation speed of the rocket. The speed is in kph and the converted speed in m/s is also shown above the speedometer. The user will also hear prompts about the speed, if it's fast or slow. 
+
+**Note: Watch demo with sound on :loud_sound:**
 
 https://user-images.githubusercontent.com/47875009/184496384-6bdc7ef5-e716-48a5-a098-c2bdc28734f2.mp4
 
