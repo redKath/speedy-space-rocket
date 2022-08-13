@@ -28,6 +28,7 @@ Here is the video that demonstrates the final output.
 
 Using the speedometer, user will set the desired rotation speed of the rocket. The speed is in kph and the converted speed in m/s is also shown above the speedometer. The user will also hear prompts about the speed, if it's fast or slow.
 
+https://user-images.githubusercontent.com/47875009/184496384-6bdc7ef5-e716-48a5-a098-c2bdc28734f2.mp4
 
 ### Links
 
