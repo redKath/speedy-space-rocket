@@ -41,6 +41,23 @@
 		<div class="drop drop11"></div>
 		<div class="drop drop12"></div>
 		<div id="canvas"></div>
+
+		<div class="wrapper">
+			<div class="rang">
+				<div class="rang-title">
+					<input class="rang-number" id="show" type="text" value="20 kph" disabled="disabled" />
+					<input class="rang-number" id="converted" type="text" value="2000 m/s" disabled="disabled" />
+				</div>
+				<svg class="meter">
+					<circle class="meter-left" r="96" cx="135" cy="142"></circle>
+					<circle class="meter-center" r="96" cx="136" cy="142"></circle>
+					<circle class="meter-right" r="96" cx="138" cy="142"></circle>
+					<polygon class="meter-clock" points="129,145 137,90 145,145"></polygon>
+					<circle class="meter-circle" r="10" cx="137" cy="145"></circle>
+				</svg>
+				<input class="rang-slider" id="range" type="range" min="0" max="100" />
+			</div>
+		</div>
 		<script src="https://cdn.jsdelivr.net/npm/three@0.138.3/build/three.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/three@0.138.3/examples/js/loaders/GLTFLoader.min.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>

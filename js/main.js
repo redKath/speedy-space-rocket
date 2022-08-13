@@ -54,7 +54,7 @@ const createScene = () => {
     window.addEventListener("resize", handleWindowResize, false);
 
     let loader = new THREE.GLTFLoader();
-    loader.load("../img/source/untitled.gltf",
+    loader.load("https://www.stivaliserna.com/assets/rocket/rocket.gltf",
         (gltf) => {
             rocket = gltf.scene;
             rocket.position.y = 50;
@@ -101,11 +101,37 @@ const loop = () => {
 };
 
 const main = () => {
+    speedometer();
     createScene();
     createLights();
 
     renderer.render(scene, camera);
-    loop();
-};
 
+    loop();
+
+};
 main();
+
+/*
+Huge thanks to @pavfilin for the speedometer code https://codepen.io/pavfilin/pen/xLKoov
+
+*/
+
+function speedometer() {
+    var rangeMeter = document.querySelector('#range');
+    var rangeShow = document.querySelector("#show");
+    var rangeClock = document.querySelector('.meter-clock');
+    var rangeConvert = document.querySelector('#converted')
+    function rangeChange() {
+        var rotateClock = rangeMeter.value;
+
+        rangeClock.style.transform = 'rotate(' + (-90 + ((rotateClock * 180) / 100)) + 'deg)';
+        // rangeShow.value = rotateClock + '%';
+        rangeShow.value = `${rotateClock} km/h`;
+
+        var numsStr = rangeShow.value.replace(/[^0-9]/g, '');
+        rangeConvert.value = `${(numsStr * 5 / 18).toFixed(2)} m/s`
+    }
+
+    rangeMeter.addEventListener('input', rangeChange);
+}
