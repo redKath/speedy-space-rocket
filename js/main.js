@@ -1,3 +1,4 @@
+
 /*
 Huge thanks to @pavfilin for the speedometer code https://codepen.io/pavfilin/pen/xLKoov
 
@@ -16,17 +17,53 @@ function speedometer() {
         // rangeShow.value = rotateClock + '%';
         rangeShow.value = `${rotateClock} km/h`;
 
-        var numsStr = rangeShow.value.replace(/[^0-9]/g, '');
-        rangeConvert.value = `${(numsStr * 5 / 18).toFixed(2)} m/s`
+        var numsStr = rangeShow.value.replace(/[^0-9]/g, ''); //getting number from string
+        rangeConvert.value = `${(numsStr * 5 / 18).toFixed(2)} m/s` // converted speed in m/s
+
+        /*
+        speech synthesis functionality inspiration is taken from the angry simulator we made durign #100devs class
+        
+        */
+        const speeches = ['not moving', 'super slow', 'just right slow', 'moderately fast', 'super fast', 'ultra fast fast']
+        const currentSpeed = getSpeed() * 100
+
+        console.log(`before speech ${currentSpeed}`)
+        if ((currentSpeed > 0) && (currentSpeed <= 10)) {
+            let yellThis = new SpeechSynthesisUtterance(speeches[1]);
+            synth.speak(yellThis);
+            console.log(currentSpeed)
+        } else if ((currentSpeed > 10) && (currentSpeed <= 30)) {
+            yellThis = new SpeechSynthesisUtterance(speeches[2]);
+            synth.speak(yellThis);
+            console.log(currentSpeed)
+        } else if ((currentSpeed > 30) && (currentSpeed <= 60)) {
+            yellThis = new SpeechSynthesisUtterance(speeches[3]);
+            synth.speak(yellThis);
+        } else if ((currentSpeed > 60) && (currentSpeed <= 80)) {
+            yellThis = new SpeechSynthesisUtterance(speeches[4]);
+            synth.speak(yellThis);
+            console.log(currentSpeed)
+        } else if (currentSpeed == 0) {
+            yellThis = new SpeechSynthesisUtterance(speeches[0]);
+            synth.speak(yellThis);
+        }
+        else {
+            yellThis = new SpeechSynthesisUtterance(speeches[5]);
+            synth.speak(yellThis);
+            console.log(currentSpeed)
+        }
     }
 
     rangeMeter.addEventListener('input', rangeChange);
 }
 
+
 function getSpeed() {
     return rangeShow.value.replace(/[^0-9]/g, '') * (1 / 100)
 }
 
+// document.querySelector('.rang-slider').addEventListener(input, describeSpeed())
+const synth = window.speechSynthesis;
 
 /*
 Inspired... copied... stolen from Stivs @stivaliserna's Three.js Animated Rocket https://codepen.io/stivaliserna/pen/rNMwpaG
@@ -130,16 +167,17 @@ const loop = () => {
     }
 
     requestAnimationFrame(loop);
+    describeSpeed();
 };
+
 
 const main = () => {
     speedometer();
     createScene();
     createLights();
-
     renderer.render(scene, camera);
-
     loop();
 };
+
 main();
 
