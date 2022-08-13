@@ -11,12 +11,14 @@
 /* LAYOUT
 /*******************************************/
 .wrapper {
-  width: 600px;
-  margin: 0 auto;
-
+  width: 400px;
+  margin: 0 auto 10px;
+  padding-bottom: 30px;
+  background: #F6ECFF;
+  border-radius: 25px;
   position: absolute;
-  top: 10px;
-  right: 10px;
+  top: 150px;
+  right: 30px;
 }
 
 .rang {
@@ -25,28 +27,34 @@
 
 .rang-title {
   display: inline-block;
-  width: 200px;
+  width: 300px;
+
 }
+
 
 .rang-number {
   width: 100%;
-  margin-top: 40px;
+  margin-top: 10px;
   text-align: center;
   border-width: 0;
-  font-size: 50px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 30px;
   font-weight: 900;
-  background-color: #fff;
-  color: #0093d7;
+  background: #F6ECFF;
+  color: #EA5987;
 }
 
 .rang-slider[type=range] {
-  width: 400px;
+  width: 350px;
   margin-top: 40px;
   -webkit-appearance: none;
+  background: #6762A7;
+  border-radius: 25px;
 }
 
 .rang-slider[type=range]:focus {
   outline: none;
+
 }
 
 .rang-slider[type=range]::-webkit-slider-runnable-track {
@@ -62,10 +70,21 @@
   height: 20px;
   margin-top: 0;
   border-radius: 25px;
-  background: #ffc815;
-  -webkit-appearance: none;
+  background: #1E062D;
+  --webkit-appearance: none;
   cursor: pointer;
 }
+
+.rang-slider[type=range]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  margin-top: 0;
+  border-radius: 25px;
+  background: #1E062D;
+  --webkit-appearance: none;
+  cursor: pointer;
+}
+
 
 .rang-slider[type=range]:focus::-webkit-slider-runnable-track {
   background: #a3cd3b;
@@ -83,7 +102,7 @@
   stroke-width: 58;
   stroke-dashoffset: 253;
   stroke-dasharray: 120 400;
-  stroke: #ffc815;
+  stroke: #76B7F9;
   fill: none;
 }
 
@@ -91,7 +110,7 @@
   stroke-width: 56;
   stroke-dashoffset: 128;
   stroke-dasharray: 120 400;
-  stroke: #a3cd3b;
+  stroke: #EA5987;
   fill: none;
 }
 
@@ -100,18 +119,18 @@
   stroke-width: 58;
   stroke-dashoffset: 5;
   stroke-dasharray: 120 400;
-  stroke: #0093d7;
+  stroke: #1E062D;
   fill: none;
 }
 
 .meter-clock {
   transform: rotate(-54deg);
   transform-origin: 137px 146px;
-  fill: black;
+  fill: #6762A7;
 }
 
 .meter-circle {
-  fill: black;
+  fill: #6762A7;
 }
 
 
