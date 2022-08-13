@@ -61,12 +61,12 @@
   width: 100%;
   height: 20px;
   border-radius: 25px;
-  background: #0093d7;
+  background: #6762A7;
   cursor: pointer;
 }
 
 .rang-slider[type=range]::-webkit-slider-thumb {
-  width: 50px;
+  width: 20px;
   height: 20px;
   margin-top: 0;
   border-radius: 25px;
@@ -87,7 +87,7 @@
 
 
 .rang-slider[type=range]:focus::-webkit-slider-runnable-track {
-  background: #a3cd3b;
+  background: #6762A7;
 }
 
 .meter {
@@ -134,6 +134,40 @@
 }
 
 
+
 /******************************************
 /* ADDITIONAL STYLES
 /*******************************************/
+.attrib {
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+a {
+  text-decoration: none;
+  color: #EA5987;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.credits {
+  z-index: calc(var(--omnibox-z-index) - 1);
+  bottom: 24px;
+  left: 24px;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-box-align: center;
+  position: fixed;
+  width: 160px;
+  background: #F6ECFF;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.credits span {
+  font-size: 13px;
+}
