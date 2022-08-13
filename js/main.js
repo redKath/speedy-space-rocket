@@ -1,8 +1,38 @@
 /*
+Huge thanks to @pavfilin for the speedometer code https://codepen.io/pavfilin/pen/xLKoov
+
+*/
+var rangeMeter = document.querySelector('#range');
+var rangeShow = document.querySelector("#show");
+var rangeClock = document.querySelector('.meter-clock');
+var rangeConvert = document.querySelector('#converted')
+
+function speedometer() {
+
+    function rangeChange() {
+        var rotateClock = rangeMeter.value;
+
+        rangeClock.style.transform = 'rotate(' + (-90 + ((rotateClock * 180) / 100)) + 'deg)';
+        // rangeShow.value = rotateClock + '%';
+        rangeShow.value = `${rotateClock} km/h`;
+
+        var numsStr = rangeShow.value.replace(/[^0-9]/g, '');
+        rangeConvert.value = `${(numsStr * 5 / 18).toFixed(2)} m/s`
+    }
+
+    rangeMeter.addEventListener('input', rangeChange);
+}
+
+function getSpeed() {
+    return rangeShow.value.replace(/[^0-9]/g, '') * (1 / 100)
+}
+
+
+/*
 Inspired... copied... stolen from Stivs @stivaliserna's Three.js Animated Rocket https://codepen.io/stivaliserna/pen/rNMwpaG
-
+ 
 It was perfect for a side project I'm working on with #100devs. So thank you Stivs.
-
+ 
 */
 
 let scene,
@@ -16,6 +46,7 @@ let scene,
     rocket,
     HEIGHT,
     WIDTH;
+
 
 const createScene = () => {
     HEIGHT = window.innerHeight;
@@ -90,10 +121,11 @@ const loop = () => {
     const t = (Date.now() % animationDuration) / animationDuration;
 
     renderer.render(scene, camera);
-
+    let speed = getSpeed();
     const delta = targetRocketPosition * Math.sin(Math.PI * 2 * t);
     if (rocket) {
-        rocket.rotation.y += 0.1;
+        // rocket.rotation.y += 0.1;
+        rocket.rotation.y += speed;
         rocket.position.y = delta;
     }
 
@@ -108,30 +140,6 @@ const main = () => {
     renderer.render(scene, camera);
 
     loop();
-
 };
 main();
 
-/*
-Huge thanks to @pavfilin for the speedometer code https://codepen.io/pavfilin/pen/xLKoov
-
-*/
-
-function speedometer() {
-    var rangeMeter = document.querySelector('#range');
-    var rangeShow = document.querySelector("#show");
-    var rangeClock = document.querySelector('.meter-clock');
-    var rangeConvert = document.querySelector('#converted')
-    function rangeChange() {
-        var rotateClock = rangeMeter.value;
-
-        rangeClock.style.transform = 'rotate(' + (-90 + ((rotateClock * 180) / 100)) + 'deg)';
-        // rangeShow.value = rotateClock + '%';
-        rangeShow.value = `${rotateClock} km/h`;
-
-        var numsStr = rangeShow.value.replace(/[^0-9]/g, '');
-        rangeConvert.value = `${(numsStr * 5 / 18).toFixed(2)} m/s`
-    }
-
-    rangeMeter.addEventListener('input', rangeChange);
-}
